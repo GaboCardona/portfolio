@@ -1,165 +1,240 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Gabriel Cardona — Portfolio</title>
-  <meta name="description" content="Portfolio of Gabriel Eduardo Cardona Castillo (Gabokar): 3D avatar rigging and modeling, and Akaime Notes, a writing tool built for a novel in progress." />
+  <meta name="color-scheme" content="light only" />
+  <title>Gabriel Cardona</title>
+  <meta name="description" content="3D work and avatars by Gabriel Cardona (Gabokar). Application for the Gumroad Creator-In-Residence program." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d0f14;
-      --panel: #151922;
-      --line: #262c3a;
-      --text: #e9ebf1;
-      --muted: #9aa2b4;
-      --accent: #d9615f;
-      --link: #8fb4ff;
-    }
-    @media (prefers-color-scheme: light) {
-      :root { --bg: #f6f5f2; --panel: #ffffff; --line: #e1ded6; --text: #1b1d24; --muted: #5d6474; --accent: #b83b3a; --link: #24509e; }
+      --ink: #3B3827;
+      --ink-soft: rgba(59, 56, 39, 0.549);
+      --ink-link: rgba(59, 56, 39, 0.722);
+      --gold: #AD8C4B;
+      --muted: #A8A592;
+      --btn: #A8A592;
+      --btn-hover: #B5B3A3;
+      --paper: #F9F9F8;
     }
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      min-width: 320px;
+      background: #E6E6E6;
+      color: var(--ink);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: none;
     }
-    a { color: var(--link); }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-    header.hero { padding: 88px 0 48px; border-bottom: 1px solid var(--line); }
-    .eyebrow { color: var(--accent); letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; font-weight: 600; margin: 0 0 14px; }
-    h1 { font: 600 clamp(2.1rem, 6vw, 3.2rem)/1.1 Georgia, "Times New Roman", serif; margin: 0 0 18px; }
-    .lede { font-size: 1.15rem; color: var(--muted); margin: 0; max-width: 40em; }
-    nav { margin-top: 26px; display: flex; gap: 20px; flex-wrap: wrap; font-size: .95rem; }
-    section { padding: 56px 0; border-bottom: 1px solid var(--line); }
-    section:last-of-type { border-bottom: 0; }
-    h2 { font: 600 1.7rem/1.2 Georgia, "Times New Roman", serif; margin: 0 0 8px; }
-    .sub { color: var(--muted); margin: 0 0 24px; }
-    p { margin: 0 0 16px; }
-    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 22px; }
-    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
-    .card h3 { margin: 0 0 4px; font-size: 1.02rem; }
-    .card p { margin: 0 0 10px; color: var(--muted); font-size: .93rem; line-height: 1.5; }
-    .card a { font-size: .93rem; font-weight: 600; }
-    ul.skills { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-    ul.skills li { border: 1px solid var(--line); background: var(--panel); padding: 4px 12px; border-radius: 999px; font-size: .88rem; color: var(--muted); }
-    figure { margin: 26px 0 8px; }
-    figure img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
-    figcaption { color: var(--muted); font-size: .88rem; margin-top: 8px; }
-    .facts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin: 22px 0 0; padding: 0; list-style: none; }
-    .facts li { border-left: 2px solid var(--accent); padding-left: 12px; font-size: .93rem; color: var(--muted); }
-    .facts strong { display: block; color: var(--text); font-size: 1.05rem; }
-    footer { padding: 36px 0 60px; color: var(--muted); font-size: .88rem; }
+    a { color: inherit; }
+
+    /* faint falling dots, like the background of the original page */
+    #dots { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    #dots i {
+      position: absolute; top: -10px; border-radius: 50%;
+      background: rgba(0, 0, 0, 0.07);
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      from { transform: translateY(0); opacity: 1; }
+      to   { transform: translateY(112vh); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { #dots { display: none; } }
+
+    .site { position: relative; z-index: 1; display: flex; justify-content: center; min-height: 100vh; }
+    .main { width: 30rem; max-width: 100%; padding: 3rem; }
+    @media (max-width: 480px) { .main { padding: 2rem 1.5rem; } }
+
+    header { margin-bottom: 2.5rem; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2.625rem; line-height: 1.5; }
+    nav li { position: relative; }
+    nav li + li::before {
+      content: ''; position: absolute; left: -1.5625rem; top: 50%; width: 0.3rem; height: 0.3rem; margin-top: -0.15rem;
+      border-radius: 50%; background: var(--muted);
+    }
+    nav a { color: var(--ink-link); text-decoration: underline; }
+    nav a:hover, .text a:hover, footer a:hover { color: var(--gold); }
+
+    hr.zig {
+      border: 0; margin: 2.5rem 0; height: 1.125rem; width: 100%;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10'><path d='M0,9 L8,1 L16,9' fill='none' stroke='rgba(59,56,39,0.3)' stroke-width='1' stroke-linecap='round'/></svg>") repeat-x center / auto 53%;
+    }
+
+    section { scroll-margin-top: 2rem; }
+    h1, h2 { margin: 0 0 2rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
+    h1 { font-size: 1.375em; }
+    h2 { font-size: 1.375em; }
+    .text { margin: 0; font-size: 1em; line-height: 2.125; font-weight: 400; color: var(--ink-soft); }
+    .text + .text { margin-top: 2.25rem; }
+    .text a { color: var(--ink-link); text-decoration: underline; }
+
+    ul.buttons { list-style: none; margin: 3rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.84375rem; }
+    ul.buttons a {
+      display: flex; align-items: center; height: 2.75rem; line-height: 2.75rem; padding: 0 1.375rem;
+      background: var(--btn); color: var(--paper); border-radius: 0.25rem; font-weight: 500; text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+    ul.buttons a:hover { background: var(--btn-hover); transform: scale(1.025); }
+    ul.buttons svg { width: 1.1em; height: 1.1em; margin-right: 0.7em; fill: var(--paper); flex: none; }
+
+    .work h3 { margin: 3rem 0 1rem; font-size: 1em; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.4; }
+    .work h3 small { font-weight: 400; color: var(--muted); font-size: 0.85em; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid a { display: block; background: rgba(255,255,255,0.35); border-radius: 0.25rem; overflow: hidden; line-height: 0; cursor: zoom-in; }
+    .grid img { width: 100%; height: auto; display: block; transition: transform 0.25s ease; }
+    .grid a:hover img { transform: scale(1.03); }
+
+    footer { margin-top: 2.5rem; }
+    footer p { margin: 0; font-size: 0.9em; line-height: 2; color: rgba(59, 56, 39, 0.761); }
+
+    #lb { position: fixed; inset: 0; z-index: 10; display: none; align-items: center; justify-content: center; background: rgba(20, 19, 14, 0.88); cursor: zoom-out; }
+    #lb.on { display: flex; }
+    #lb img { max-width: 94vw; max-height: 94vh; width: auto; height: auto; border-radius: 0.25rem; }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Portfolio · Creator-in-Residence application</p>
-      <h1>Gabriel Eduardo Cardona Castillo</h1>
-      <p class="lede">3D artist from Venezuela who also builds software. I make avatars, and I built my own tool to write a novel. Most of my 3D work is published under the name <strong>Gabokar</strong>.</p>
-      <nav>
-        <a href="#3d">3D avatars</a>
-        <a href="#akaime">Akaime Notes</a>
-        <a href="#about">About</a>
-      </nav>
+  <div id="dots" aria-hidden="true"></div>
+  <div class="site">
+    <div class="main">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <hr class="zig" />
+
+      <section id="about">
+        <h1>Hi, Gumroad Team!</h1>
+        <p class="text">If you're checking on this, you probably read my email. I would appreciate If you read everything in here It is a really quick summary on my 3D journey and the reason I'd like to apply for the Creator-In-Residence.</p>
+      </section>
+
+      <hr class="zig" />
+
+      <section id="work" class="work">
+        <h2>My Journey</h2>
+        <p class="text">Here's some links to most of my stores, keep in mind that a lot of this was made when I was fourteen years old. I was very passionate about 3D characters in general and knew I could make a living on It.</p>
+
+        <ul class="buttons">
+          <li><a href="https://marketplace.secondlife.com/stores/210973" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>SecondLife</a></li>
+          <li><a href="https://www.sansar.com/store/shops/GaboKar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Sansar</a></li>
+          <li><a href="https://sketchfab.com/GaboKar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Sketchfab</a></li>
+          <li><a href="https://www.cgtrader.com/gabokar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>CGTrader</a></li>
+          <li><a href="https://www.fiverr.com/gabokar/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Fiverr</a></li>
+          <li><a href="https://github.com/GaboCardona" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>My GitHub</a></li>
+        </ul>
+
+        <h2>My current scope</h2>
+        <p class="text">With time, I started taking on custom commissions for people. Here's some of my work.</p>
+
+        <h3>Ai</h3>
+        <div class="grid" data-set="ai"></div>
+
+        <h3>Nina</h3>
+        <div class="grid" data-set="nina"></div>
+        <h3><small>Nina, other outfits</small></h3>
+        <div class="grid three" data-set="nina" data-views="o2,o3,o4"></div>
+
+        <h3>Glint</h3>
+        <div class="grid" data-set="glint"></div>
+
+        <h3>Glint Nova</h3>
+        <div class="grid" data-set="glint-nova"></div>
+
+        <h3>Bui</h3>
+        <div class="grid" data-set="bui"></div>
+
+        <h3>Ground <small>first outfit</small></h3>
+        <div class="grid" data-set="ground1"></div>
+        <h3>Ground <small>second outfit</small></h3>
+        <div class="grid" data-set="ground2"></div>
+
+        <h3>Sibex</h3>
+        <div class="grid" data-set="sibex"></div>
+
+        <h3>Jaeskii</h3>
+        <div class="grid" data-set="jaeskii"></div>
+
+        <h3>Kurry</h3>
+        <div class="grid" data-set="kurry"></div>
+
+        <h3>Loke</h3>
+        <div class="grid" data-set="loke"></div>
+
+        <h3>Myf</h3>
+        <div class="grid" data-set="myf"></div>
+
+        <h3>Scroom</h3>
+        <div class="grid" data-set="scroom"></div>
+      </section>
+
+      <hr class="zig" />
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="text">You can reach me at <a href="mailto:gabo.cardona.10@hotmail.com">gabo.cardona.10@hotmail.com</a>.</p>
+      </section>
+
+      <footer>
+        <hr class="zig" />
+        <p>&copy; Gabriel Cardona. Most of my 3D work is published under the name Gabokar.</p>
+      </footer>
     </div>
-  </header>
+  </div>
 
-  <main class="wrap">
-    <section id="3d">
-      <h2>3D avatars &amp; rigging</h2>
-      <p class="sub">Modeling, UV mapping, texturing, rigging and skinning in Blender and Unity.</p>
-      <p>I started working with 3D models when I was fourteen. For the first four to five years I made content for Second Life and Sansar, and I still run a store on each. Today I specialize in avatars for VRChat: full rigs, hands and eye tracking, visemes, custom expressions and removable parts.</p>
+  <div id="lb" role="dialog" aria-label="Enlarged image"><img alt="" /></div>
 
-      <ul class="facts">
-        <li><strong>Since 2017</strong>Selling on Second Life Marketplace</li>
-        <li><strong>139 listings</strong>in my Second Life store</li>
-        <li><strong>5 / 5</strong>on CGTrader, Polygon Expert level</li>
-        <li><strong>5+ years</strong>of avatar work across platforms</li>
-      </ul>
+  <script>
+    // gallery: each grid lists its views, built from a folder name
+    var LABEL = { front: 'front', three_quarter: 'three-quarter', profile: 'side', back: 'back', o2: 'outfit 2', o3: 'outfit 3', o4: 'outfit 4' };
+    document.querySelectorAll('.grid').forEach(function (g) {
+      var set = g.getAttribute('data-set');
+      var views = (g.getAttribute('data-views') || 'front,three_quarter,profile,back').split(',');
+      var name = g.previousElementSibling ? g.previousElementSibling.textContent.trim() : set;
+      views.forEach(function (v) {
+        var a = document.createElement('a');
+        a.href = 'assets/r/' + set + '/' + v + '_l.jpg';
+        var img = document.createElement('img');
+        img.src = 'assets/r/' + set + '/' + v + '.jpg';
+        img.alt = name + ', ' + (LABEL[v] || v) + ' view';
+        img.loading = 'lazy'; img.width = 640; img.height = 800;
+        a.appendChild(img); g.appendChild(a);
+      });
+    });
 
-      <div class="grid">
-        <div class="card">
-          <h3>Second Life Marketplace</h3>
-          <p>GaboKar-Store: complete mesh avatars with rigs and Bento hands and face.</p>
-          <a href="https://marketplace.secondlife.com/stores/210973" rel="noopener">Open store →</a>
-        </div>
-        <div class="card">
-          <h3>CGTrader</h3>
-          <p>Rigged, PBR-textured characters ready for animation, with reviews.</p>
-          <a href="https://www.cgtrader.com/gabokar" rel="noopener">Open profile →</a>
-        </div>
-        <div class="card">
-          <h3>Sketchfab</h3>
-          <p>Rigged PBR models viewable in 3D right in the browser.</p>
-          <a href="https://sketchfab.com/GaboKar" rel="noopener">Open profile →</a>
-        </div>
-        <div class="card">
-          <h3>Sansar</h3>
-          <p>My store on the Sansar platform.</p>
-          <a href="https://www.sansar.com/store/shops/GaboKar" rel="noopener">Open store →</a>
-        </div>
-        <div class="card">
-          <h3>Fiverr</h3>
-          <p>Freelance rigging for Second Life and avatar export for VRChat.</p>
-          <a href="https://www.fiverr.com/gabokar/export-your-avatar-to-vrchat" rel="noopener">Open gig →</a>
-        </div>
-      </div>
+    // lightbox
+    var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('.grid a');
+      if (a) { e.preventDefault(); lbImg.src = a.href; lbImg.alt = a.querySelector('img').alt; lb.classList.add('on'); return; }
+      if (lb.classList.contains('on')) lb.classList.remove('on');
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
 
-      <ul class="skills" aria-label="Skills">
-        <li>Blender</li><li>Unity 3D</li><li>Rigging &amp; skinning</li><li>UV mapping</li><li>Texturing (PBR)</li><li>Low-poly modeling</li><li>VRChat avatars</li><li>Second Life mesh</li>
-      </ul>
-    </section>
-
-    <section id="akaime">
-      <h2>Akaime Notes</h2>
-      <p class="sub">A desktop writing app I built for my own novel.</p>
-      <p>I am writing a novel in three parts, and I built my own app to write it in. Akaime Notes is a Windows desktop app made with Electron, React and TipTap. It has had nine releases so far.</p>
-
-      <figure>
-        <img src="assets/akaime-notes.jpg" width="1400" height="900" alt="Akaime Notes home screen showing three novel parts as cards over a dark forest illustration, with a story mind map button above them." loading="lazy" />
-        <figcaption>The home screen: each part of the novel is a card, with side stories and the story mind map above.</figcaption>
-      </figure>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Story mind map</h3>
-          <p>A chronological map of everything that happens in the story, used as a guide while writing.</p>
-        </div>
-        <div class="card">
-          <h3>Parts, seasons, episodes</h3>
-          <p>The novel is organized the way it is published, with per-episode outlines and word-count progress.</p>
-        </div>
-        <div class="card">
-          <h3>Independent side stories</h3>
-          <p>Side stories are their own entities with their own grid and workspace, not nested under a part.</p>
-        </div>
-        <div class="card">
-          <h3>Focus mode</h3>
-          <p>A fullscreen, distraction-free writing view with a configurable column.</p>
-        </div>
-        <div class="card">
-          <h3>Safe sync across two PCs</h3>
-          <p>Live reload and a save-conflict guard, so notes synced through cloud storage never overwrite each other.</p>
-        </div>
-        <div class="card">
-          <h3>Export &amp; import</h3>
-          <p>Full-project and per-part export to Markdown and back.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>I am Gabriel, a 3D artist from Venezuela. I have been working on 3D models since I was fourteen, and I now split my time between avatar work and my own projects. The Creator-in-Residence program would let me put much more time into both.</p>
-      <p>Most of my 3D work was published under the name Gabokar, which is why the links above use it.</p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">© 2026 Gabriel Eduardo Cardona Castillo.</div>
-  </footer>
+    // faint falling dots
+    (function () {
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var box = document.getElementById('dots');
+      for (var i = 0; i < 40; i++) {
+        var d = document.createElement('i'), s = 2 + Math.random() * 4;
+        d.style.left = (Math.random() * 100) + 'vw';
+        d.style.width = d.style.height = s + 'px';
+        d.style.animationDuration = (6 + Math.random() * 10) + 's';
+        d.style.animationDelay = (-Math.random() * 16) + 's';
+        box.appendChild(d);
+      }
+    })();
+  </script>
 </body>
 </html>
