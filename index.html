@@ -115,6 +115,12 @@
     .story p.last { margin-bottom: 0; }
     .note { margin: 1.5rem 0 0; font-size: 0.85em; font-style: italic; line-height: 1.7; color: var(--muted); }
 
+    .peek-text { margin-top: 2.5rem; }
+    .peek { margin: 1.5rem 0 0; }
+    .peek a { display: block; line-height: 0; cursor: zoom-in; border-radius: 0.25rem; overflow: hidden; }
+    .peek img { width: 100%; height: auto; display: block; }
+    .peek figcaption { margin: 0.6rem 0 0; font-size: 0.8em; font-style: italic; color: var(--muted); line-height: 1.4; }
+
     footer { margin-top: 2.5rem; }
     footer p { margin: 0; font-size: 0.9em; line-height: 2; color: rgba(59, 56, 39, 0.761); }
 
@@ -199,6 +205,12 @@
         </article>
 
         <p class="note">This is a translation. The original text was written in Spanish.</p>
+
+        <p class="text peek-text">I've been writing all of the text myself, and Akaime Notes is the program where I write the whole story. Every part, every season, the characters and my ideas live in there. Here's a peek of it, with the same text I shared above open on the screen.</p>
+        <figure class="peek">
+          <a href="assets/akaime-peek_l.jpg"><img src="assets/akaime-peek.jpg" width="900" height="482" loading="lazy" alt="Akaime Notes with the note 'La teoría de la consciencia' open, in Spanish, next to the list of parts, seasons, characters and ideas." /></a>
+          <figcaption>Akaime Notes, with the note open.</figcaption>
+        </figure>
       </section>
 
       <hr class="zig" />
@@ -271,7 +283,7 @@
     // lightbox
     var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('.grid a, .ref a');
+      var a = e.target.closest && e.target.closest('.grid a, .ref a, .peek a');
       if (a) { e.preventDefault(); lbImg.src = a.href; lbImg.alt = a.querySelector('img').alt; lb.classList.add('on'); return; }
       if (lb.classList.contains('on')) lb.classList.remove('on');
     });
