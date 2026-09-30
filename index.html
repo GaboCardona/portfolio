@@ -84,13 +84,27 @@
     ul.buttons a:hover { background: var(--btn-hover); transform: scale(1.025); }
     ul.buttons svg { width: 1.1em; height: 1.1em; margin-right: 0.7em; fill: var(--paper); flex: none; }
 
-    .work h3 { margin: 3rem 0 1rem; font-size: 1em; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.4; }
+    .work h3 { margin: 0 0 1rem; font-size: 1em; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.4; }
     .work h3 small { font-weight: 400; color: var(--muted); font-size: 0.85em; }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
     .grid.three { grid-template-columns: repeat(3, 1fr); }
     .grid a { display: block; background: rgba(255,255,255,0.35); border-radius: 0.25rem; overflow: hidden; line-height: 0; cursor: zoom-in; }
     .grid img { width: 100%; height: auto; display: block; transition: transform 0.25s ease; }
     .grid a:hover img { transform: scale(1.03); }
+
+    /* each model: reference on one side, four views on the other */
+    .set { margin: 3rem 0 0; }
+    .set h3 { margin: 0 0 1rem; }
+    .set.wide { width: min(58rem, calc(100vw - 2rem)); position: relative; left: 50%; transform: translateX(-50%); }
+    .set.wide .body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; align-items: center; }
+    .set .ref { display: flex; align-items: center; justify-content: center; }
+    .set .ref a { display: block; line-height: 0; cursor: zoom-in; background: #fff; border-radius: 0.25rem; overflow: hidden; }
+    .set .ref img { display: block; max-width: 100%; max-height: 36rem; width: auto; height: auto; }
+    .set .ref figcaption, .set .extra-label { margin: 0.6rem 0 0; font-size: 0.8em; font-style: italic; color: var(--muted); line-height: 1.4; text-align: center; }
+    .set .ref figure { margin: 0; }
+    .set .extra { margin-top: 0.6rem; }
+    .set .extra-label { text-align: left; margin-bottom: 0.4rem; }
+    @media (max-width: 720px) { .set.wide .body { grid-template-columns: 1fr; } }
 
     footer { margin-top: 2.5rem; }
     footer p { margin: 0; font-size: 0.9em; line-height: 2; color: rgba(59, 56, 39, 0.761); }
@@ -130,7 +144,6 @@
           <li><a href="https://marketplace.secondlife.com/stores/210973" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>SecondLife</a></li>
           <li><a href="https://www.sansar.com/store/shops/GaboKar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Sansar</a></li>
           <li><a href="https://sketchfab.com/GaboKar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Sketchfab</a></li>
-          <li><a href="https://www.cgtrader.com/gabokar" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>CGTrader</a></li>
           <li><a href="https://www.fiverr.com/gabokar/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>Fiverr</a></li>
           <li><a href="https://github.com/GaboCardona" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5 1.41 1.41 1.5-1.5a3 3 0 0 1 4.24 4.24l-3 3a3 3 0 0 1-4.24 0z"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5-1.41-1.41-1.5 1.5a3 3 0 0 1-4.24-4.24l3-3a3 3 0 0 1 4.24 0z"/></svg>My GitHub</a></li>
         </ul>
@@ -138,45 +151,7 @@
         <h2>My current scope</h2>
         <p class="text">With time, I started taking on custom commissions for people. Here's some of my work.</p>
 
-        <h3>Ai</h3>
-        <div class="grid" data-set="ai"></div>
-
-        <h3>Nina</h3>
-        <div class="grid" data-set="nina"></div>
-        <h3><small>Nina, other outfits</small></h3>
-        <div class="grid three" data-set="nina" data-views="o2,o3,o4"></div>
-
-        <h3>Glint</h3>
-        <div class="grid" data-set="glint"></div>
-
-        <h3>Glint Nova</h3>
-        <div class="grid" data-set="glint-nova"></div>
-
-        <h3>Bui</h3>
-        <div class="grid" data-set="bui"></div>
-
-        <h3>Ground <small>first outfit</small></h3>
-        <div class="grid" data-set="ground1"></div>
-        <h3>Ground <small>second outfit</small></h3>
-        <div class="grid" data-set="ground2"></div>
-
-        <h3>Sibex</h3>
-        <div class="grid" data-set="sibex"></div>
-
-        <h3>Jaeskii</h3>
-        <div class="grid" data-set="jaeskii"></div>
-
-        <h3>Kurry</h3>
-        <div class="grid" data-set="kurry"></div>
-
-        <h3>Loke</h3>
-        <div class="grid" data-set="loke"></div>
-
-        <h3>Myf</h3>
-        <div class="grid" data-set="myf"></div>
-
-        <h3>Scroom</h3>
-        <div class="grid" data-set="scroom"></div>
+        <div id="gallery"></div>
       </section>
 
       <hr class="zig" />
@@ -196,27 +171,60 @@
   <div id="lb" role="dialog" aria-label="Enlarged image"><img alt="" /></div>
 
   <script>
-    // gallery: each grid lists its views, built from a folder name
-    var LABEL = { front: 'front', three_quarter: 'three-quarter', profile: 'side', back: 'back', o2: 'outfit 2', o3: 'outfit 3', o4: 'outfit 4' };
-    document.querySelectorAll('.grid').forEach(function (g) {
-      var set = g.getAttribute('data-set');
-      var views = (g.getAttribute('data-views') || 'front,three_quarter,profile,back').split(',');
-      var name = g.previousElementSibling ? g.previousElementSibling.textContent.trim() : set;
+    // gallery: one block per model. "ref" puts the reference sheet on the left.
+    var LABEL = { front: "front", three_quarter: "three-quarter", profile: "side", back: "back", o2: "outfit 2", o3: "outfit 3", o4: "outfit 4" };
+    var MODELS = [
+      { name: "Ai", set: "ai" },
+      { name: "Nina", set: "nina", ref: "nina", extra: { label: "Other outfits", views: ["o2", "o3", "o4"] } },
+      { name: "Glint", set: "glint", ref: "glint-base" },
+      { name: "Glint Nova", set: "glint-nova", ref: "glint-nova" },
+      { name: "Bui", set: "bui", ref: "bui" },
+      { name: "Ground", sub: "first outfit", set: "ground1", ref: "ground" },
+      { name: "Ground", sub: "second outfit", set: "ground2" },
+      { name: "Sibex", set: "sibex", ref: "sibex" },
+      { name: "Jaeskii", set: "jaeskii", ref: "jaeskii" },
+      { name: "Kurry", set: "kurry" },
+      { name: "Loke", set: "loke", ref: "loke" },
+      { name: "Myf", set: "myf", ref: "myf" },
+      { name: "Scroom", set: "scroom", ref: "scroom" }
+    ];
+    function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
+    function thumbs(m, views, cls) {
+      var g = el("div", "grid" + (cls ? " " + cls : ""));
       views.forEach(function (v) {
-        var a = document.createElement('a');
-        a.href = 'assets/r/' + set + '/' + v + '_l.jpg';
-        var img = document.createElement('img');
-        img.src = 'assets/r/' + set + '/' + v + '.jpg';
-        img.alt = name + ', ' + (LABEL[v] || v) + ' view';
-        img.loading = 'lazy'; img.width = 640; img.height = 800;
+        var a = el("a"); a.href = "assets/r/" + m.set + "/" + v + "_l.jpg";
+        var img = new Image(); img.src = "assets/r/" + m.set + "/" + v + ".jpg";
+        img.alt = m.name + (m.sub ? " (" + m.sub + ")" : "") + ", " + (LABEL[v] || v) + " view";
+        img.loading = "lazy"; img.width = 640; img.height = 800;
         a.appendChild(img); g.appendChild(a);
       });
+      return g;
+    }
+    var gallery = document.getElementById("gallery");
+    MODELS.forEach(function (m) {
+      var set = el("div", "set" + (m.ref ? " wide" : ""));
+      set.appendChild(el("h3", "", m.name + (m.sub ? " <small>" + m.sub + "</small>" : "")));
+      var body = el("div", "body");
+      if (m.ref) {
+        var side = el("div", "ref"), fig = el("figure"), a = el("a");
+        a.href = "assets/ref/" + m.ref + "_l.jpg";
+        var img = new Image(); img.src = "assets/ref/" + m.ref + ".jpg"; img.alt = m.name + ", reference"; img.loading = "lazy";
+        a.appendChild(img); fig.appendChild(a); fig.appendChild(el("figcaption", "", "reference"));
+        side.appendChild(fig); body.appendChild(side);
+      }
+      var views = el("div", "views");
+      views.appendChild(thumbs(m, ["front", "three_quarter", "profile", "back"]));
+      if (m.extra) {
+        var ex = el("div", "extra"); ex.appendChild(el("p", "extra-label", m.extra.label));
+        ex.appendChild(thumbs(m, m.extra.views, "three")); views.appendChild(ex);
+      }
+      body.appendChild(views); set.appendChild(body); gallery.appendChild(set);
     });
 
     // lightbox
     var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('.grid a');
+      var a = e.target.closest && e.target.closest('.grid a, .ref a');
       if (a) { e.preventDefault(); lbImg.src = a.href; lbImg.alt = a.querySelector('img').alt; lb.classList.add('on'); return; }
       if (lb.classList.contains('on')) lb.classList.remove('on');
     });
